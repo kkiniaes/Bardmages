@@ -61,11 +61,26 @@ public class MainMenuManager : MonoBehaviour {
 		inPlayerSelect = true;
 		GetComponent<Animator>().SetInteger("State",2);
 	}
-	#endregion
-		
+    #endregion
 
-	#region Unity_Code
-	void Start() {
+    public void LoadLevel(int level)
+    {
+        string dest;
+        switch(level)
+        {
+            case 1: dest = "Test"; break;
+            case 2: dest = "Bardmages Farm"; break;
+            case 3: dest = "Checkerboard"; break;
+            case 4: dest = "Coliseum"; break;
+            case 5: dest = "RotatingTiles"; break;
+            case 6: dest = "racemode"; break;
+            default: dest = "Test"; break;
+        }
+        Assets.Scripts.Data.Data.Instance.loadScene(dest);
+    }
+
+    #region Unity_Code
+    void Start() {
 		selectedTune = new int[4,3];
 		nextTune = new int[4];
 		for(int i = 0; i < 4; i++) {
